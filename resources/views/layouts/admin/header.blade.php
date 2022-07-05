@@ -106,7 +106,7 @@
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"
                                                                    href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none"><span
-                                    class="user-name text-bold-600">جواد محمدی</span><span
+                                    class="user-name text-bold-600">{{auth()->user()->name}}</span><span
                                     class="user-status">دردسترس</span></div>
                             <span><img class="round" src="{{asset('back/app-assets/images/portrait/small/avatar-s-11.jpg')}}"
                                        alt="avatar" height="40" width="40"></span></a>
