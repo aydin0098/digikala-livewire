@@ -26,5 +26,6 @@
     </p>
 </footer>
 @include('layouts.admin.scripts')
+
 </body>
 </html>

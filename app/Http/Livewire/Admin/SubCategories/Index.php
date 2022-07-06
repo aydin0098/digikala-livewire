@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\SubCategories;
 
 use App\Models\Category;
+use App\Models\Log;
 use App\Models\SubCategory;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -57,6 +58,7 @@ class Index extends Component
         if ($this->subCategory->status)
         {
             $this->subCategory->status = 1;
+
         }else{
             $this->subCategory->status = 0;
         }
@@ -65,6 +67,11 @@ class Index extends Component
 
 
         $this->subCategory->save();
+        Log::create([
+            'user_id' => auth()->user()->id,
+            'url' => 'افزودن زیردسته '.$this->subCategory->title,
+            'actionType' => 'ایجاد'
+        ]);
         $this->emit('toast','success','زیردسته ایجاد شد');
 
     }
@@ -77,10 +84,20 @@ class Index extends Component
             $cat->update([
                 'status' => 0
             ]);
+            Log::create([
+                'user_id' => auth()->user()->id,
+                'url' => 'غیرفعالسازی زیردسته '.$this->subCategory->title,
+                'actionType' => 'غیرفعالسازی'
+            ]);
             $this->emit('toast','success','زیردسته غیرفعال شد');
         }else{
             $cat->update([
                 'status' => 1
+            ]);
+            Log::create([
+                'user_id' => auth()->user()->id,
+                'url' => 'فعالسازی زیردسته '.$this->subCategory->title,
+                'actionType' => 'فعالسازی'
             ]);
             $this->emit('toast','success','زیردسته فعال شد');
         }

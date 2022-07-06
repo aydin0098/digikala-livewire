@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Categories;
 
 use App\Models\Category;
+use App\Models\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -70,6 +71,12 @@ class Index extends Component
         $this->category->save();
         $this->emit('toast','success','دسته ایجاد شد');
 
+        Log::create([
+            'user_id' => auth()->user()->id,
+            'url' => 'افزودن دسته '.$this->category->title,
+            'actionType' => 'ایجاد'
+        ]);
+
     }
 
     public function updateStatus($id)
@@ -81,11 +88,21 @@ class Index extends Component
                 'status' => 0
             ]);
             $this->emit('toast','success','دسته غیرفعال شد');
+            Log::create([
+                'user_id' => auth()->user()->id,
+                'url' => 'غیرفعال کردن دسته '.$this->category->title,
+                'actionType' => 'غیرفعالسازی'
+            ]);
         }else{
             $cat->update([
                 'status' => 1
             ]);
             $this->emit('toast','success','دسته فعال شد');
+            Log::create([
+                'user_id' => auth()->user()->id,
+                'url' => 'فعال کردن دسته '.$this->category->title,
+                'actionType' => 'فعالسازی'
+            ]);
         }
 
     }

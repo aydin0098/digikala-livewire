@@ -19,7 +19,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a style="padding: 10px" class="badge badge-primary" href="{{route('admin.categories.index')}}">دسته ها</a></li>
                                     <li class="breadcrumb-item"><a style="padding: 10px" class="badge badge-primary" href="{{route('admin.subCat.index')}}">زیردسته ها</a></li>
-                                    <li class="breadcrumb-item"><a style="padding: 10px" class="badge badge-primary" href="#">دسته های کودک</a></li>
+                                    <li class="breadcrumb-item"><a style="padding: 10px" class="badge badge-primary" href="{{route('admin.childCat.index')}}">دسته های کودک</a></li>
                                     <li class="breadcrumb-item">
                                         <div style="position: absolute; top: 26%;margin-right: 18px">
                                             <form action="" >
@@ -27,6 +27,9 @@
                                             </form>
 
                                         </div>
+                                    </li>
+                                    <li class="breadcrumb-item" style="position: absolute;left: 13px;top: 30%">
+                                        <a style="padding: 10px" class="badge badge-danger" href="{{route('admin.subCat.trashed')}}">سطل زباله ({{\App\Models\SubCategory::onlyTrashed()->count()}})</a>
                                     </li>
                                 </ol>
                             </nav>

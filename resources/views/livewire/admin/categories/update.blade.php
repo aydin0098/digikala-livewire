@@ -77,7 +77,7 @@
                                         </fieldset>
                                     </div>
                                     <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class=" btn btn-primary mr-1 mb-1 waves-effect waves-light">افزودن</button>
+                                        <button type="submit" class=" btn btn-primary mr-1 mb-1 waves-effect waves-light">بروزرسانی</button>
                                     </div>
                                 </div>
                             </div>

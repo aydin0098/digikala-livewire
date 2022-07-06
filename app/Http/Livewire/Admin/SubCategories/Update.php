@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\SubCategories;
 
 use App\Models\Category;
+use App\Models\Log;
 use App\Models\SubCategory;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -38,6 +39,11 @@ class Update extends Component
 
         $this->subCategory->update();
         $this->emit('toast','success','زیردسته ویرایش شد');
+        Log::create([
+            'user_id' => auth()->user()->id,
+            'url' => 'بروزرسانی زیردسته '.$this->subCategory->title,
+            'actionType' => 'بروزرسانی'
+        ]);
         return redirect()->route('admin.subCat.index');
 
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Categories;
 
 use App\Models\Category;
+use App\Models\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -41,6 +42,11 @@ class Update extends Component
 
         $this->category->update();
         $this->emit('toast','success','دسته ویرایش شد');
+        Log::create([
+            'user_id' => auth()->user()->id,
+            'url' => 'بروزرسانی دسته '.$this->category->title,
+            'actionType' => 'بروزرسانی'
+        ]);
         return redirect()->route('admin.categories.index');
 
     }

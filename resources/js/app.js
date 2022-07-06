@@ -1,4 +1,4 @@
-require('./bootstrap');
+import './bootstrap';
 let Swal = require('sweetalert2');
 
 const Toast = Swal.mixin({
